@@ -15,6 +15,7 @@ public class Main {
     public static Scanner input = new Scanner(System.in);
     public static boolean stopApp = false;
 
+    //Vraagt userinput voor de faciliteiten van een kammplaats en checkt op ongeldige invoer
     public static String[] FaciliteitenInput(){
         ArrayList<String> faciliteiten = new ArrayList<>();
 
@@ -41,6 +42,7 @@ public class Main {
         return arr;
     }
 
+    //Zoekt voor een lid op naam
     public static Lid vindLid(String naam, List<Lid> leden) {
         Iterator<Lid> iterator = leden.iterator();
         while (iterator.hasNext()) {
@@ -51,7 +53,7 @@ public class Main {
         }
         return null;
     }
-
+    //Zoekt voor een personeelslid op naam
     public static Personeelslid vindPersoneelsLid(String naam, List<Personeelslid> personeelsleden) {
         Iterator<Personeelslid> iterator = personeelsleden.iterator();
         while (iterator.hasNext()) {
@@ -63,6 +65,7 @@ public class Main {
         return null;
     }
 
+    //Toont het meerkeuze-menu
     public static int menu() {
 
         int keuze;
@@ -89,6 +92,7 @@ public class Main {
         return keuze;
     }
 
+    //Maken van een nieuw lid via user input
     public static void maakNiewLid() {
         String naam;
         String adres;
@@ -106,7 +110,7 @@ public class Main {
         Lid nieuwLid = new Lid(geboortejaar, adres, naam);
         leden.add(nieuwLid);
     }
-
+    //Maken van een nieuw persoeelslid via user input
     public static void maakNiewPersoneelslid(){
         String naam;
         String adres;
@@ -127,7 +131,7 @@ public class Main {
         Personeelslid nieuwPersoneelsLid = new Personeelslid(geboortejaar, adres, naam, taak);
         personeelsLeden.add(nieuwPersoneelsLid);
     }
-
+    //Maken van een nieuwe kampplaats via user input
     public static void maakNieweKampplaats(){
         ArrayList<String> faciliteiten = new ArrayList<String>();
         String adres;
@@ -144,7 +148,7 @@ public class Main {
         Kampplaats nieuweKampplaats = new Kampplaats(adres, maximumcapaciteit, faciliteitenArray);
         kampPlaatsen.add(nieuweKampplaats);
     }
-
+    //Maken van een nieuw kamp via user input
     public static void maakNiewKamp(){
         String naam;
         int duur;
