@@ -1,6 +1,7 @@
 Examen Programming Advanced:
 
 Takenlijst:
+
 Objects(Models) maken voor alle entities die we nodig hebben en inheratence gebruiken:
 	- Persoon
 		- Lid
