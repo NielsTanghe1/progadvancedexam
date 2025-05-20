@@ -3,7 +3,9 @@ package models;
 import models.personen.Lid;
 import models.personen.Personeelslid;
 
-public class Kamp {
+import java.io.Serializable;
+
+public class Kamp implements Serializable {
     private String kampnaam;
     private Kampplaats kampplaats;
     private int lengte;
@@ -62,5 +64,14 @@ public class Kamp {
 
     public void setPersoneel(Personeelslid[] personeel) {
         this.personeel = personeel;
+    }
+
+    @Override
+    public String toString() {
+        return "Kamp info{" +
+                "Naam: " + kampnaam +
+                ", Kampplaats: " + kampplaats.getAdres() +
+                ", lengte: " + lengte +
+                '}';
     }
 }
