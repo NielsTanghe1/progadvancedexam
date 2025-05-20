@@ -1,5 +1,10 @@
 Examen Programming Advanced:
 
+Bronnen:
+	- https://stackoverflow.com
+	- www.w3schools.com/java/java_ref_reference.asp
+ 	- https://canvas.ehb.be/courses/36734 (Programming advanced cursus)
+
 Prioitaire takenlijst:
 
 Objects(Models) maken voor alle entities die we nodig hebben en inheratence gebruiken: - DONE
