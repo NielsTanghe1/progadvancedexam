@@ -155,7 +155,7 @@ public void maakNiewLid() {
     int geboortejaar;
 
     Scanner input = new Scanner(System.in);
-
+    try{
     System.out.println("Naam lid:");
     naam = input.nextLine();
     System.out.println("Adres lid:");
@@ -165,6 +165,11 @@ public void maakNiewLid() {
 
     Lid nieuwLid = new Lid(geboortejaar, adres, naam);
     leden.add(nieuwLid);
+    }catch(Exception e){
+        System.out.println(e + " Ongeldige waarde, lid niet aangemaakt.");
+    }
+
+
 }
 //Maken van een nieuw persoeelslid via user input
 public void maakNiewPersoneelslid() {
@@ -188,7 +193,7 @@ public void maakNiewPersoneelslid() {
         Personeelslid nieuwPersoneelsLid = new Personeelslid(geboortejaar, adres, naam, taak);
         personeelsLeden.add(nieuwPersoneelsLid);
     } catch (Exception e) {
-        System.out.println("Ongeldige input, personeelslid niet aangemaakt. Probeer opnieuw.");
+        System.out.println(e+ " Ongeldige input, personeelslid niet aangemaakt. Probeer opnieuw.");
     }
 
 
@@ -297,18 +302,24 @@ public void voegLedenToeAanKamp() {
     Scanner input = new Scanner(System.in);
 
     System.out.println("Kies kamp:");
-    final int[] keuzekamp = {0};
-    kampen.forEach(kamp -> {
-        keuzekamp[0]++;
-        System.out.println(keuzekamp[0] + ". " + kamp.getKampnaam() + "Lengte: " + kamp.getLengte());
-    });
-    Kamp selectedKamp = kampen.get(input.nextInt() - 1);
+    Kamp selectedKamp = new Kamp("placeholder", null, 0);
+    try{
+        final int[] keuzekamp = {0};
+        kampen.forEach(kamp -> {
+            keuzekamp[0]++;
+            System.out.println(keuzekamp[0] + ". " + kamp.getKampnaam() + "Lengte: " + kamp.getLengte());
+        });
+        selectedKamp = kampen.get(input.nextInt() - 1);
+    }catch (Exception e) {
+        System.out.println("Ongeldige input, actie geannuleerd.");
+    }
+
 
     ArrayList<Lid> addedleden = new ArrayList<>();
-    System.out.println("Hoeveel leden wil je toevoegen (max " + leden.size() + "):");
     int hoeveel = 1;
     boolean geldig = false;
     try {
+        System.out.println("Hoeveel leden wil je toevoegen (max " + leden.size() + "):");
         hoeveel = input.nextInt();
         if (hoeveel >= 1 && hoeveel <= leden.size()) {
             geldig = true;
@@ -371,40 +382,45 @@ public void printKampInfo () {
         }
 
     } catch (Exception e) {
-        System.out.println("Ongeldige input");
+        System.out.println(e);
     }
 }
 
 public void main() {
     maakTestData();
     do {
-        switch (menu()) {
-            case 0:
-                stopApp = true;
-                break;
-            case 1:
-                maakNiewPersoneelslid();
-                break;
-            case 2:
-                maakNiewLid();
-                break;
-            case 3:
-                maakNieweKampplaats();
-                break;
-            case 4:
-                maakNiewKamp();
-                break;
-            case 5:
-                voegPersoneelsledenToeAanKamp();
-                break;
-            case 6:
-                voegLedenToeAanKamp();
-                break;
-            case 7:
-                printKampInfo();
-                break;
-            default:
-                break;
+        try {
+            switch (menu()) {
+                case 0:
+                    stopApp = true;
+                    break;
+                case 1:
+                    maakNiewPersoneelslid();
+                    break;
+                case 2:
+                    maakNiewLid();
+                    break;
+                case 3:
+                    maakNieweKampplaats();
+                    break;
+                case 4:
+                    maakNiewKamp();
+                    break;
+                case 5:
+                    voegPersoneelsledenToeAanKamp();
+                    break;
+                case 6:
+                    voegLedenToeAanKamp();
+                    break;
+                case 7:
+                    printKampInfo();
+                    break;
+                default:
+                    break;
+            }
+        }catch (Exception e) {
+            System.out.println("Ongeldige input");
         }
+
     } while (!stopApp);
 }
