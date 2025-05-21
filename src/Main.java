@@ -6,10 +6,10 @@ import models.personen.Personeelslid;
 import java.util.*;
 import java.io.*;
 import java.util.ArrayList;
-public ArrayList<Lid> leden = new ArrayList<Lid>();
-public ArrayList<Personeelslid> personeelsLeden = new ArrayList<Personeelslid>();
-public ArrayList<Kampplaats> kampPlaatsen = new ArrayList<Kampplaats>();
-public ArrayList<Kamp> kampen = new ArrayList<Kamp>();
+public ArrayList<Lid> leden = new ArrayList<>();
+public ArrayList<Personeelslid> personeelsLeden = new ArrayList<>();
+public ArrayList<Kampplaats> kampPlaatsen = new ArrayList<>();
+public ArrayList<Kamp> kampen = new ArrayList<>();
 
 public static boolean stopApp = false;
 
@@ -117,9 +117,7 @@ public Lid vindLid(String naam, List<Lid> leden) {
 }
 //Zoekt voor een personeelslid op naam
 public Personeelslid vindPersoneelsLid(String naam, List<Personeelslid> personeelsleden) {
-    Iterator<Personeelslid> iterator = personeelsleden.iterator();
-    while (iterator.hasNext()) {
-        Personeelslid personeelslid = iterator.next();
+    for (Personeelslid personeelslid : personeelsleden) {
         if (personeelslid.getNaam().equals(naam)) {
             return personeelslid;
         }
@@ -131,8 +129,6 @@ public int menu() {
 
     int keuze;
     Scanner input = new Scanner(System.in);
-
-    /***************************************************/
 
     System.out.println("Maak je keuze:");
     System.out.println("-------------------------\n");
@@ -217,9 +213,6 @@ public void maakNieweKampplaats() {
 public void maakNiewKamp() {
     String naam;
     int duur;
-    ArrayList<Lid> ingeschrevenLeden = new ArrayList<>();
-    ArrayList<Personeelslid> ingeschrevenPersoneelseden = new ArrayList<>();
-    boolean stop = false;
 
     Scanner input = new Scanner(System.in);
 
