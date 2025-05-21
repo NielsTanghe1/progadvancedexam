@@ -1,8 +1,9 @@
 package models.personen;
 
 public class Persoon {
-    public String naam, adres;
-    public int geboortejaar;
+    private String naam;
+    private String adres;
+    private int geboortejaar;
 
     public Persoon(int geboortejaar, String adres, String naam) {
         this.geboortejaar = geboortejaar;
